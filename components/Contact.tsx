@@ -7,20 +7,20 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Address",
-    value: "42 Via Roma, Little Italy District, New York, NY 10013",
-    href: "https://maps.google.com",
+    value: "Gulshan-e-Iqbal, Karachi, Pakistan",
+    href: "https://maps.google.com/?q=Gulshan-e-Iqbal,Karachi,Pakistan",
   },
   {
     icon: Phone,
     label: "Phone",
-    value: "+1 (212) 555-0189",
-    href: "tel:+12125550189",
+    value: "+92 300 1234567",
+    href: "tel:+923001234567",
   },
   {
     icon: Mail,
     label: "Email",
-    value: "hello@bellacucina.com",
-    href: "mailto:hello@bellacucina.com",
+    value: "contact@brasato.com",
+    href: "mailto:contact@brasato.com",
   },
   {
     icon: Clock,
@@ -29,6 +29,15 @@ const contactInfo = [
     href: null,
   },
 ];
+
+const EMPTY_FORM = {
+  name: "",
+  email: "",
+  phone: "",
+  date: "",
+  guests: "2",
+  message: "",
+};
 
 interface FormState {
   name: string;
@@ -40,17 +49,11 @@ interface FormState {
 }
 
 export default function Contact() {
-  const [form, setForm] = useState<FormState>({
-    name: "",
-    email: "",
-    phone: "",
-    date: "",
-    guests: "2",
-    message: "",
-  });
+  const [form, setForm] = useState<FormState>(EMPTY_FORM);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState<Partial<FormState>>({});
+  const [submittedName, setSubmittedName] = useState("");
 
   const sectionRef = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
@@ -83,7 +86,9 @@ export default function Contact() {
   };
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
@@ -96,10 +101,17 @@ export default function Contact() {
     e.preventDefault();
     if (!validate()) return;
     setLoading(true);
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
     setLoading(false);
+    setSubmittedName(form.name.split(" ")[0]);
     setSubmitted(true);
+    setForm(EMPTY_FORM); // clear form after submission
+  };
+
+  const handleReset = () => {
+    setSubmitted(false);
+    setSubmittedName("");
+    setErrors({});
   };
 
   const inputClass = (field: keyof FormState) =>
@@ -110,10 +122,15 @@ export default function Contact() {
     }`;
 
   return (
-    <section ref={sectionRef} id="contact" className="py-24 bg-white relative overflow-hidden">
+    <section
+      ref={sectionRef}
+      id="contact"
+      aria-labelledby="contact-heading"
+      className="py-24 bg-white relative overflow-hidden"
+    >
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cream rounded-full translate-x-1/2 -translate-y-1/2 opacity-80" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-orange/5 rounded-full -translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 right-0 w-96 h-96 bg-brand-cream rounded-full translate-x-1/2 -translate-y-1/2 opacity-80" aria-hidden="true" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-orange/5 rounded-full -translate-x-1/2 translate-y-1/2" aria-hidden="true" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section header */}
@@ -121,14 +138,17 @@ export default function Contact() {
           <span className="inline-block text-brand-orange text-sm font-semibold tracking-[0.2em] uppercase mb-3">
             Get in Touch
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl font-bold text-brand-brown mb-4">
+          <h2
+            id="contact-heading"
+            className="font-display text-4xl sm:text-5xl font-bold text-brand-brown mb-4"
+          >
             Reserve Your Table
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            Whether it&apos;s a quiet dinner for two or a celebration for twenty, we&apos;re
-            ready to make it memorable.
+            Whether it is a quiet dinner for two or a celebration for twenty, we
+            are ready to make it memorable.
           </p>
-          <div className="mt-6 flex items-center justify-center gap-2">
+          <div className="mt-6 flex items-center justify-center gap-2" aria-hidden="true">
             <div className="h-px w-16 bg-brand-orange/30" />
             <div className="w-2 h-2 bg-brand-orange rounded-full" />
             <div className="h-px w-16 bg-brand-orange/30" />
@@ -143,24 +163,26 @@ export default function Contact() {
             }`}
           >
             <div className="bg-brand-brown rounded-3xl p-8 h-full text-white relative overflow-hidden">
-              {/* Decoration */}
-              <div className="absolute top-0 right-0 w-40 h-40 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+              <div className="absolute top-0 right-0 w-40 h-40 bg-brand-orange/10 rounded-full -translate-y-1/2 translate-x-1/2" aria-hidden="true" />
+              <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" aria-hidden="true" />
 
               <div className="relative">
                 <h3 className="font-display text-2xl font-bold mb-2">
                   Contact Information
                 </h3>
                 <p className="text-white/60 text-sm mb-8 leading-relaxed">
-                  We&apos;d love to hear from you. Reach out and our team will respond
-                  within 24 hours.
+                  We would love to hear from you. Reach out and our team will
+                  respond within 24 hours.
                 </p>
 
-                <div className="space-y-6">
+                <address className="not-italic space-y-6">
                   {contactInfo.map((info) => (
                     <div key={info.label} className="flex items-start gap-4">
                       <div className="flex-shrink-0 w-10 h-10 bg-brand-orange/20 rounded-xl flex items-center justify-center">
-                        <info.icon className="w-5 h-5 text-brand-orange" />
+                        <info.icon
+                          className="w-5 h-5 text-brand-orange"
+                          aria-hidden="true"
+                        />
                       </div>
                       <div>
                         <div className="text-white/50 text-xs uppercase tracking-wider mb-1">
@@ -170,8 +192,14 @@ export default function Contact() {
                           <a
                             href={info.href}
                             className="text-white text-sm hover:text-brand-orange transition-colors duration-200 leading-relaxed"
-                            target={info.href.startsWith("http") ? "_blank" : undefined}
-                            rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                            target={
+                              info.href.startsWith("http") ? "_blank" : undefined
+                            }
+                            rel={
+                              info.href.startsWith("http")
+                                ? "noopener noreferrer"
+                                : undefined
+                            }
                           >
                             {info.value}
                           </a>
@@ -183,13 +211,13 @@ export default function Contact() {
                       </div>
                     </div>
                   ))}
-                </div>
+                </address>
 
-                {/* Map placeholder */}
+                {/* Google Maps embed */}
                 <div className="mt-8 rounded-2xl overflow-hidden border border-white/10">
                   <iframe
-                    title="Bella Cucina location map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.9736!2d-74.0060!3d40.7282!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQzJzQxLjUiTiA3NMKwMDAnMjEuNiJX!5e0!3m2!1sen!2sus!4v1234567890"
+                    title="Brasato restaurant location — Gulshan-e-Iqbal, Karachi"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3619.8!2d67.0822!3d24.9056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e7b5555555%3A0x0!2sGulshan-e-Iqbal%2C+Karachi%2C+Pakistan!5e0!3m2!1sen!2spk!4v1234567890"
                     width="100%"
                     height="180"
                     style={{ border: 0 }}
@@ -211,78 +239,109 @@ export default function Contact() {
           >
             {submitted ? (
               <div className="h-full flex items-center justify-center">
-                <div className="text-center py-16">
-                  <CheckCircle className="w-20 h-20 text-green-500 mx-auto mb-6" />
+                <div className="text-center py-16" role="alert" aria-live="polite">
+                  <CheckCircle
+                    className="w-20 h-20 text-green-500 mx-auto mb-6"
+                    aria-hidden="true"
+                  />
                   <h3 className="font-display text-3xl font-bold text-brand-brown mb-3">
                     Reservation Received!
                   </h3>
                   <p className="text-gray-500 text-lg max-w-md mx-auto mb-6">
-                    Thank you, {form.name.split(" ")[0]}! We&apos;ll confirm your table
-                    within 2 hours. We look forward to welcoming you.
+                    Thank you, {submittedName}! We will confirm your table within
+                    2 hours. We look forward to welcoming you at Brasato.
                   </p>
                   <button
-                    onClick={() => {
-                      setSubmitted(false);
-                      setForm({ name: "", email: "", phone: "", date: "", guests: "2", message: "" });
-                    }}
-                    className="bg-brand-orange text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-orange-dark transition-colors duration-200"
+                    onClick={handleReset}
+                    className="bg-brand-orange text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-orange-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
                   >
                     Make Another Reservation
                   </button>
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} noValidate className="space-y-5">
+              <form
+                onSubmit={handleSubmit}
+                noValidate
+                aria-label="Reservation form"
+                className="space-y-5"
+              >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   {/* Name */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                      Full Name <span className="text-brand-orange">*</span>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-semibold text-gray-700 mb-1.5"
+                    >
+                      Full Name{" "}
+                      <span className="text-brand-orange" aria-hidden="true">
+                        *
+                      </span>
                     </label>
                     <input
+                      id="name"
                       type="text"
                       name="name"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="Marco Rossi"
+                      placeholder="Ali Hassan"
                       className={inputClass("name")}
                       autoComplete="name"
+                      aria-required="true"
+                      aria-describedby={errors.name ? "name-error" : undefined}
                     />
                     {errors.name && (
-                      <p className="text-red-500 text-xs mt-1">{errors.name}</p>
+                      <p id="name-error" role="alert" className="text-red-500 text-xs mt-1">
+                        {errors.name}
+                      </p>
                     )}
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                      Email Address <span className="text-brand-orange">*</span>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-semibold text-gray-700 mb-1.5"
+                    >
+                      Email Address{" "}
+                      <span className="text-brand-orange" aria-hidden="true">
+                        *
+                      </span>
                     </label>
                     <input
+                      id="email"
                       type="email"
                       name="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="marco@example.com"
+                      placeholder="ali@example.com"
                       className={inputClass("email")}
                       autoComplete="email"
+                      aria-required="true"
+                      aria-describedby={errors.email ? "email-error" : undefined}
                     />
                     {errors.email && (
-                      <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+                      <p id="email-error" role="alert" className="text-red-500 text-xs mt-1">
+                        {errors.email}
+                      </p>
                     )}
                   </div>
 
                   {/* Phone */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-semibold text-gray-700 mb-1.5"
+                    >
                       Phone Number
                     </label>
                     <input
+                      id="phone"
                       type="tel"
                       name="phone"
                       value={form.phone}
                       onChange={handleChange}
-                      placeholder="+1 (555) 000-0000"
+                      placeholder="+92 300 0000000"
                       className={inputClass("phone")}
                       autoComplete="tel"
                     />
@@ -290,10 +349,14 @@ export default function Contact() {
 
                   {/* Date */}
                   <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                    <label
+                      htmlFor="date"
+                      className="block text-sm font-semibold text-gray-700 mb-1.5"
+                    >
                       Preferred Date
                     </label>
                     <input
+                      id="date"
                       type="date"
                       name="date"
                       value={form.date}
@@ -306,10 +369,14 @@ export default function Contact() {
 
                 {/* Guests */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
+                  <label
+                    htmlFor="guests"
+                    className="block text-sm font-semibold text-gray-700 mb-1.5"
+                  >
                     Number of Guests
                   </label>
                   <select
+                    id="guests"
                     name="guests"
                     value={form.guests}
                     onChange={handleChange}
@@ -325,35 +392,49 @@ export default function Contact() {
 
                 {/* Message */}
                 <div>
-                  <label className="block text-sm font-semibold text-gray-700 mb-1.5">
-                    Message / Special Requests <span className="text-brand-orange">*</span>
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-semibold text-gray-700 mb-1.5"
+                  >
+                    Message / Special Requests{" "}
+                    <span className="text-brand-orange" aria-hidden="true">
+                      *
+                    </span>
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
                     rows={4}
                     placeholder="Let us know about any dietary requirements, special occasions, or other requests..."
                     className={`${inputClass("message")} resize-none`}
+                    aria-required="true"
+                    aria-describedby={errors.message ? "message-error" : undefined}
                   />
                   {errors.message && (
-                    <p className="text-red-500 text-xs mt-1">{errors.message}</p>
+                    <p id="message-error" role="alert" className="text-red-500 text-xs mt-1">
+                      {errors.message}
+                    </p>
                   )}
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-3 bg-brand-orange text-white font-bold text-base py-4 rounded-xl hover:bg-brand-orange-dark transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-orange/30 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                  className="w-full flex items-center justify-center gap-3 bg-brand-orange text-white font-bold text-base py-4 rounded-xl hover:bg-brand-orange-dark transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-orange/30 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
                 >
                   {loading ? (
                     <>
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      Sending…
+                      <div
+                        className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                        aria-hidden="true"
+                      />
+                      <span>Sending...</span>
                     </>
                   ) : (
                     <>
-                      <Send className="w-5 h-5" />
+                      <Send className="w-5 h-5" aria-hidden="true" />
                       Send Reservation Request
                     </>
                   )}

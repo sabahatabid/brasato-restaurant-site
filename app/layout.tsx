@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Brasato — Delicious Food, Unforgettable Experience",
+  title: "Brasato | Premium Restaurant Experience",
   description:
-    "Experience the finest Italian cuisine at Brasato. Fresh ingredients, authentic recipes, and a warm atmosphere await you.",
-  keywords: "restaurant, Italian food, dining, fine dining, Brasato",
+    "Brasato offers a premium dining experience with delicious cuisine, elegant ambiance, and exceptional service.",
+  keywords: "restaurant, fine dining, Brasato, Karachi, premium dining, Italian cuisine",
 };
 
 export default function RootLayout({

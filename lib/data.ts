@@ -29,7 +29,7 @@ export const menuItems: MenuItem[] = [
     id: 2,
     name: "Arancini di Riso",
     description:
-      "Golden fried risotto balls filled with mozzarella and slow-cooked ragù, served with marinara.",
+      "Golden fried risotto balls filled with mozzarella and slow-cooked ragu, served with marinara.",
     price: "$12.00",
     category: "Starters",
     image:
@@ -174,7 +174,7 @@ export const testimonials: Testimonial[] = [
     role: "Food Blogger",
     rating: 5,
     feedback:
-      "Absolutely breathtaking. The Osso Buco melted in my mouth and the ambiance transported me straight to Milan. Bella Cucina is, without question, the finest Italian dining experience in the city.",
+      "Absolutely breathtaking. The Osso Buco melted in my mouth and the ambiance was stunning. Brasato is, without question, the finest dining experience in the city.",
     avatar:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
     date: "May 2025",
@@ -185,7 +185,7 @@ export const testimonials: Testimonial[] = [
     role: "Business Executive",
     rating: 5,
     feedback:
-      "I've hosted a dozen client dinners here and every single time the food and service have been flawless. The sommelier's wine pairings are outstanding. This is my go-to for important evenings.",
+      "I have hosted a dozen client dinners at Brasato and every single time the food and service have been flawless. The wine pairings are outstanding. This is my go-to for important evenings.",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
     date: "April 2025",
@@ -196,7 +196,7 @@ export const testimonials: Testimonial[] = [
     role: "Travel Writer",
     rating: 5,
     feedback:
-      "As someone who travels the world eating at top restaurants, I can say Bella Cucina holds its own against the best. The truffle tagliatelle alone was worth the trip. Unforgettable.",
+      "As someone who travels the world eating at top restaurants, I can say Brasato holds its own against the best. The truffle tagliatelle alone was worth the trip. Truly unforgettable.",
     avatar:
       "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=100&h=100&fit=crop&crop=face",
     date: "June 2025",
@@ -207,7 +207,7 @@ export const testimonials: Testimonial[] = [
     role: "Chef & Restaurateur",
     rating: 5,
     feedback:
-      "Coming from a fellow chef, this kitchen has genuine soul. The ingredients are impeccably sourced, the technique is refined but not showy. It's the kind of cooking that makes you feel at home.",
+      "Coming from a fellow chef, Brasato has genuine soul. The ingredients are impeccably sourced, the technique is refined but not showy. It is the kind of cooking that makes you feel at home.",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
     date: "March 2025",
@@ -218,7 +218,7 @@ export const testimonials: Testimonial[] = [
     role: "Event Planner",
     rating: 5,
     feedback:
-      "We held our company's anniversary dinner here for 40 guests. The private dining setup was stunning, every dish came out perfectly timed, and the staff went above and beyond. 10/10 would book again.",
+      "We held our company anniversary dinner at Brasato for 40 guests. The private dining setup was stunning, every dish came out perfectly timed, and the staff went above and beyond. 10/10.",
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
     date: "February 2025",
@@ -229,7 +229,7 @@ export const testimonials: Testimonial[] = [
     role: "Wine Enthusiast",
     rating: 5,
     feedback:
-      "The wine cellar at Bella Cucina is a hidden gem. Over 300 carefully selected Italian labels, and the sommelier took genuine time to understand what I wanted. A phenomenal experience start to finish.",
+      "The cellar at Brasato is a hidden gem. Over 300 carefully selected labels, and the sommelier took genuine time to understand what I wanted. A phenomenal experience from start to finish.",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
     date: "January 2025",

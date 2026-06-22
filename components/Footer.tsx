@@ -26,15 +26,19 @@ const footerLinks = {
 };
 
 const socials = [
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Instagram, href: "#", label: "Follow Brasato on Instagram" },
+  { icon: Facebook, href: "#", label: "Follow Brasato on Facebook" },
+  { icon: Twitter, href: "#", label: "Follow Brasato on Twitter" },
+  { icon: Youtube, href: "#", label: "Watch Brasato on YouTube" },
 ];
 
 export default function Footer() {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <footer className="bg-brand-brown text-white">
+    <footer className="bg-brand-brown text-white" aria-label="Site footer">
       {/* Top CTA strip */}
       <div className="bg-brand-orange py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
@@ -47,10 +51,8 @@ export default function Footer() {
             </p>
           </div>
           <button
-            onClick={() =>
-              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })
-            }
-            className="flex-shrink-0 bg-white text-brand-orange font-bold px-8 py-3.5 rounded-full hover:bg-brand-cream transition-colors duration-200 shadow-lg"
+            onClick={() => scrollTo("contact")}
+            className="flex-shrink-0 bg-white text-brand-orange font-bold px-8 py-3.5 rounded-full hover:bg-brand-cream transition-colors duration-200 shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-brand-orange"
           >
             Book a Table
           </button>
@@ -62,30 +64,34 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="flex items-center gap-2 mb-5">
-              <div className="w-10 h-10 bg-brand-orange rounded-full flex items-center justify-center">
-                <UtensilsCrossed className="w-5 h-5 text-white" />
+            <button
+              onClick={() => scrollTo("home")}
+              className="flex items-center gap-2 mb-5 group"
+              aria-label="Brasato — back to top"
+            >
+              <div className="w-10 h-10 bg-brand-orange rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                <UtensilsCrossed className="w-5 h-5 text-white" aria-hidden="true" />
               </div>
               <span className="font-display text-xl font-bold tracking-wide">
-                Bra<span className="text-brand-orange">sato</span>
+                Brasato
               </span>
-            </div>
+            </button>
             <p className="text-white/60 text-sm leading-relaxed max-w-xs">
-              Authentic Italian cuisine crafted with passion, tradition, and the
-              finest seasonal ingredients. A dining experience like no other.
-              Welcome to Brasato.
+              Premium dining crafted with passion, tradition, and the finest
+              seasonal ingredients. An experience like no other — welcome to
+              Brasato.
             </p>
 
             {/* Social links */}
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-3 mt-6" aria-label="Social media links">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.href}
                   aria-label={s.label}
-                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-orange flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+                  className="w-10 h-10 rounded-full bg-white/10 hover:bg-brand-orange flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-brand-orange"
                 >
-                  <s.icon className="w-4 h-4" />
+                  <s.icon className="w-4 h-4" aria-hidden="true" />
                 </a>
               ))}
             </div>
@@ -93,7 +99,7 @@ export default function Footer() {
 
           {/* Link columns */}
           {Object.entries(footerLinks).map(([title, links]) => (
-            <div key={title}>
+            <nav key={title} aria-label={title}>
               <h4 className="font-semibold text-sm tracking-wider uppercase text-white/80 mb-5">
                 {title}
               </h4>
@@ -102,14 +108,14 @@ export default function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-white/50 text-sm hover:text-brand-orange transition-colors duration-200"
+                      className="text-white/50 text-sm hover:text-brand-orange transition-colors duration-200 focus:outline-none focus:text-brand-orange"
                     >
                       {link.label}
                     </a>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
       </div>
@@ -118,10 +124,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/40 text-sm">
-            © {new Date().getFullYear()} Bella Cucina. All rights reserved.
+            &copy; {new Date().getFullYear()} Brasato. All rights reserved.
           </p>
           <p className="text-white/40 text-xs">
-            Crafted with ❤️ and a pinch of Italian soul — Brasato.
+            Crafted with passion — Gulshan-e-Iqbal, Karachi, Pakistan
           </p>
         </div>
       </div>
