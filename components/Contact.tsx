@@ -125,7 +125,7 @@ export default function Contact() {
             Reserve Your Table
           </h2>
           <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            Whether it's a quiet dinner for two or a celebration for twenty, we're
+            Whether it&apos;s a quiet dinner for two or a celebration for twenty, we&apos;re
             ready to make it memorable.
           </p>
           <div className="mt-6 flex items-center justify-center gap-2">
@@ -152,7 +152,7 @@ export default function Contact() {
                   Contact Information
                 </h3>
                 <p className="text-white/60 text-sm mb-8 leading-relaxed">
-                  We'd love to hear from you. Reach out and our team will respond
+                  We&apos;d love to hear from you. Reach out and our team will respond
                   within 24 hours.
                 </p>
 
@@ -217,7 +217,7 @@ export default function Contact() {
                     Reservation Received!
                   </h3>
                   <p className="text-gray-500 text-lg max-w-md mx-auto mb-6">
-                    Thank you, {form.name.split(" ")[0]}! We'll confirm your table
+                    Thank you, {form.name.split(" ")[0]}! We&apos;ll confirm your table
                     within 2 hours. We look forward to welcoming you.
                   </p>
                   <button

@@ -105,7 +105,7 @@ export default function Testimonials() {
             <Quote className="w-10 h-10 text-brand-orange mx-auto mb-6 opacity-80" />
 
             <p className="text-white/90 text-lg sm:text-xl leading-relaxed italic mb-8 font-light">
-              "{current.feedback}"
+              &quot;{current.feedback}&quot;
             </p>
 
             <div className="flex flex-col items-center gap-3">
@@ -192,7 +192,7 @@ export default function Testimonials() {
                 <StarRating rating={t.rating} />
               </div>
               <p className="text-white/60 text-xs leading-relaxed line-clamp-2">
-                "{t.feedback}"
+                &quot;{t.feedback}&quot;
               </p>
             </button>
           ))}

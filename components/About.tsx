@@ -143,7 +143,7 @@ export default function About() {
                 city, where he built a dining room that feels like home.
               </p>
               <p>
-                Today, Brasato's kitchen team sources the finest seasonal produce, imports
+                Today, Brasato&apos;s kitchen team sources the finest seasonal produce, imports
                 artisanal Italian staples, and honours those original recipes while
                 weaving in contemporary technique. Every dish tells a story.
               </p>
