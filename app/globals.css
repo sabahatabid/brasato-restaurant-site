@@ -8,11 +8,11 @@
   }
 
   body {
-    @apply bg-brand-cream font-body text-gray-800 antialiased;
+    @apply bg-brand-cream font-body text-gray-800 antialiased font-medium;
   }
 
   h1, h2, h3, h4 {
-    @apply font-display;
+    @apply font-display font-bold;
   }
 }
 

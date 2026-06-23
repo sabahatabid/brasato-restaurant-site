@@ -98,13 +98,13 @@ export default function Testimonials() {
         {/* Featured testimonial (carousel) */}
         <div className="max-w-3xl mx-auto mb-12">
           <div
-            className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 sm:p-12 text-center transition-all duration-200 ${
+            className={`bg-white/90 border border-white/20 rounded-3xl p-8 sm:p-12 text-center transition-all duration-200 ${
               isAnimating ? "opacity-0 scale-95" : "opacity-100 scale-100"
             }`}
           >
             <Quote className="w-10 h-10 text-brand-orange mx-auto mb-6 opacity-80" />
 
-            <p className="text-white/90 text-lg sm:text-xl leading-relaxed italic mb-8 font-light">
+            <p className="text-gray-800 text-lg sm:text-xl leading-relaxed italic mb-8 font-light">
               &quot;{current.feedback}&quot;
             </p>
 
@@ -119,9 +119,9 @@ export default function Testimonials() {
                 />
               </div>
               <div>
-                <div className="font-semibold text-white text-base">{current.name}</div>
-                <div className="text-brand-orange/80 text-sm">{current.role}</div>
-                <div className="text-white/40 text-xs mt-0.5">{current.date}</div>
+                <div className="font-semibold text-gray-800 text-base">{current.name}</div>
+                <div className="text-brand-orange text-sm">{current.role}</div>
+                <div className="text-gray-600 text-xs mt-0.5">{current.date}</div>
               </div>
               <StarRating rating={current.rating} />
             </div>
@@ -131,7 +131,7 @@ export default function Testimonials() {
           <div className="flex items-center justify-center gap-6 mt-8">
             <button
               onClick={handlePrev}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all duration-200"
+              className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center text-white/70 hover:bg-white/20 hover:text-white hover:border-white/60 transition-all duration-200"
               aria-label="Previous testimonial"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -155,7 +155,7 @@ export default function Testimonials() {
 
             <button
               onClick={handleNext}
-              className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white/70 hover:bg-white/10 hover:text-white hover:border-white/40 transition-all duration-200"
+              className="w-12 h-12 rounded-full border border-white/40 flex items-center justify-center text-white/70 hover:bg-white/20 hover:text-white hover:border-white/60 transition-all duration-200"
               aria-label="Next testimonial"
             >
               <ChevronRight className="w-5 h-5" />
@@ -171,8 +171,8 @@ export default function Testimonials() {
               onClick={() => handleDot(i)}
               className={`text-left p-5 rounded-2xl border transition-all duration-300 ${
                 i === activeIndex
-                  ? "bg-brand-orange/15 border-brand-orange/40 shadow-lg shadow-brand-orange/10"
-                  : "bg-white/5 border-white/10 hover:bg-white/8 hover:border-white/20"
+                  ? "bg-white/90 border-brand-orange/60 shadow-lg shadow-brand-orange/20"
+                  : "bg-white/80 border-white/40 hover:bg-white/90 hover:border-white/60"
               }`}
             >
               <div className="flex items-center gap-3 mb-3">
@@ -186,12 +186,12 @@ export default function Testimonials() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <div className="font-semibold text-white text-sm truncate">{t.name}</div>
-                  <div className="text-white/50 text-xs truncate">{t.role}</div>
+                  <div className="font-semibold text-gray-800 text-sm truncate">{t.name}</div>
+                  <div className="text-gray-600 text-xs truncate">{t.role}</div>
                 </div>
                 <StarRating rating={t.rating} />
               </div>
-              <p className="text-white/60 text-xs leading-relaxed line-clamp-2">
+              <p className="text-gray-700 text-xs leading-relaxed line-clamp-2">
                 &quot;{t.feedback}&quot;
               </p>
             </button>

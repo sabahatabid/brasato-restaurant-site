@@ -23,11 +23,13 @@ export default function Hero() {
     >
       {/* Background image */}
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-[10s] ease-out"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat object-cover transition-opacity duration-[10s] ease-out"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1920&h=1080&fit=crop')",
-          transform: loaded ? "scale(1)" : "scale(1.05)",
+            "url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=2400&h=1600&fit=crop&q=90')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          opacity: loaded ? 1 : 0.8,
         }}
       />
 
@@ -102,7 +104,7 @@ export default function Hero() {
         >
           <button
             onClick={() => scrollTo("menu")}
-            className="group relative overflow-hidden bg-brand-orange text-white font-semibold text-base px-8 py-4 rounded-full hover:shadow-2xl hover:shadow-brand-orange/40 transition-all duration-300 hover:-translate-y-1 min-w-[180px]"
+            className="group relative overflow-hidden bg-brand-orange text-white font-semibold text-base px-8 py-4 rounded-full hover:shadow-2xl hover:shadow-brand-orange/50 transition-all duration-300 hover:-translate-y-1 min-w-[180px]"
           >
             <span className="relative z-10 flex items-center justify-center gap-2">
               View Menu

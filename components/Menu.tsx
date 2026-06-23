@@ -81,7 +81,7 @@ function MenuCard({ item, index }: { item: (typeof menuItems)[0]; index: number 
         </p>
 
         {/* Order button */}
-        <button className="mt-4 w-full flex items-center justify-center gap-2 border-2 border-brand-orange/30 text-brand-orange text-sm font-semibold py-2 rounded-xl hover:bg-brand-orange hover:text-white hover:border-brand-orange transition-all duration-300">
+        <button className="mt-4 w-full flex items-center justify-center gap-2 border-2 border-brand-orange/30 text-brand-orange text-sm font-semibold py-2 rounded-xl hover:bg-brand-orange hover:text-white hover:border-brand-orange hover:shadow-lg hover:shadow-brand-orange/30 transition-all duration-300">
           <ShoppingBag className="w-4 h-4" />
           Add to Order
         </button>

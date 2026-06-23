@@ -253,7 +253,7 @@ export default function Contact() {
                   </p>
                   <button
                     onClick={handleReset}
-                    className="bg-brand-orange text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-orange-dark transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
+                    className="bg-brand-orange text-white font-semibold px-8 py-3 rounded-full hover:bg-brand-orange-dark hover:shadow-lg hover:shadow-brand-orange/40 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
                   >
                     Make Another Reservation
                   </button>
@@ -422,7 +422,7 @@ export default function Contact() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full flex items-center justify-center gap-3 bg-brand-orange text-white font-bold text-base py-4 rounded-xl hover:bg-brand-orange-dark transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-brand-orange/30 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
+                  className="w-full flex items-center justify-center gap-3 bg-brand-orange text-white font-bold text-base py-4 rounded-xl hover:bg-brand-orange-dark hover:shadow-2xl hover:shadow-brand-orange/40 transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0 focus:outline-none focus:ring-2 focus:ring-brand-orange focus:ring-offset-2"
                 >
                   {loading ? (
                     <>
